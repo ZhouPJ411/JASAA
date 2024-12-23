@@ -1,11 +1,10 @@
 import torch
 import torch.nn as nn
-from torch_geometric.nn import GCNConv
 import torch.fft
 
-class LSTMTeacher(nn.Module):
+class LSTM(nn.Module):
     def __init__(self, input_size=75, hidden_size=128, num_layers=3, num_classes=22, dropout=0.5):
-        super(LSTMTeacher, self).__init__()
+        super(LSTM, self).__init__()
         # 多层 LSTM，增加深度
         self.lstm = nn.LSTM(input_size, hidden_size, num_layers=num_layers, batch_first=True, dropout=dropout)
 
@@ -35,7 +34,7 @@ class LSTMTeacher(nn.Module):
         out = self.fc2(out)
         return out
 
-class RNNTeacher(nn.Module):
+class RNN(nn.Module):
     def __init__(self, input_size=75, hidden_size=128, num_layers=3, num_classes=22, dropout=0.5):
         super(RNNTeacher, self).__init__()
         self.hidden_size = hidden_size
@@ -73,7 +72,7 @@ class RNNTeacher(nn.Module):
         out = self.fc2(out)
         return out
 
-class TransformerTeacher(nn.Module):
+class Transformer(nn.Module):
     def __init__(self, input_size=75, hidden_size=128, num_layers=3, num_classes=22, dropout=0.5):
         super(TransformerTeacher, self).__init__()
 
